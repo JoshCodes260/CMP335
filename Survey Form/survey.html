@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="survey.css">
+</head>
+
+<body>
+
+<h1>Music Survey</h1>
+
+<form>
+
+    <label for="name">Enter your name:</label><br>
+    <input type="text" id="name" name="name" required>
+
+    <br><br>
+
+    <label for="genre">Choose your favorite music genre:</label><br>
+    <select id="genre" name="genre" required>
+        <option value="" disabled selected>Choose a genre</option>
+        <option value="pop">Pop</option>
+        <option value="rock">Rock</option>
+        <option value="hiphop">Hip-Hop</option>
+    </select>
+
+    <p>How often do you listen to music?</p>
+
+    <input type="radio" id="daily" name="music_time" value="Daily" required>
+    <label for="daily">Every day</label><br>
+
+    <input type="radio" id="weekly" name="music_time" value="Weekly">
+    <label for="weekly">A few times a week</label><br>
+
+    <input type="radio" id="rarely" name="music_time" value="Rarely">
+    <label for="rarely">Rarely</label>
+
+    <p>Where do you usually listen to music?</p>
+
+    <input type="checkbox" id="car" name="place1" value="Car">
+    <label for="car">In the car</label><br>
+
+    <input type="checkbox" id="gym" name="place2" value="Gym">
+    <label for="gym">At the gym</label><br>
+
+    <input type="checkbox" id="home" name="place3" value="Home">
+    <label for="home">At home</label><br>
+
+    <input type="checkbox" id="school" name="place4" value="School">
+    <label for="school">At school</label><br>
+
+    <input type="checkbox" id="work" name="place5" value="Work">
+    <label for="work">At work</label>
+    <p>Who is your favorite artist and why?</p>
+
+<textarea id="artist" name="artist" rows="5" cols="40" required></textarea>
+<br><br>
+<input type="submit" value="Submit Survey">
+
+</form>
+
+</body>
+</html>
