@@ -10,7 +10,7 @@
 
 <h1>Music Survey</h1>
 
-<form>
+<form id="musicForm">
 
     <label for="name">Enter your name:</label><br>
     <input type="text" id="name" name="name" required>
@@ -59,6 +59,10 @@
 <input type="submit" value="Submit Survey">
 
 </form>
-
+<script>
+document.getElementById("musicForm").addEventListener("submit", function() {
+  alert("Your music survey was submitted successfully!");
+});
+</script>
 </body>
 </html>
