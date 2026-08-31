@@ -2,7 +2,9 @@
 * {
   box-sizing: border-box;
 }
-
+body {
+  background-color: rgb(97, 103, 105);
+}
 /* Container for flexboxes */
 .myflexboxRow {
   display: flex;
