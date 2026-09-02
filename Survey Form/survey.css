@@ -5,3 +5,9 @@ body {
 h1 {
   color: rgb(0, 0, 0);
 }
+.question {
+  font-weight: bold;
+}
+p {
+  font-weight: bold;
+}
