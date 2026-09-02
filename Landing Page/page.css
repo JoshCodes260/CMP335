@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    background-color: lightyellow;
+    text-align: center;
+}
+
+header {
+    background-color: lightgoldenrodyellow;
+    padding: 20px;
+}
+
+header h1 {
+    text-align: left;
+    font-size: 45px;
+    margin: 0;
+}
+
+.links {
+    text-align: right;
+}
+
+.links a {
+    margin: 10px;
+}
+
+.orangeBar {
+    background-color: orange;
+    height: 20px;
+}
+
+main {
+    display: flex;
+}
+
+.column {
+    width: 25%;
+    padding: 25px;
+}
+
+.column img {
+    width: 180px;
+    height: 260px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-around;
+    padding: 25px;
+}
+
+h2 {
+    font-size: 28px;
+}
