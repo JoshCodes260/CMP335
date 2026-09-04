@@ -1,26 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    background-color: lightyellow;
+    background-color: #2f2f2f;
+    color: white;
     text-align: center;
 }
 
 header {
-    background-color: lightgoldenrodyellow;
+    background-color: #1f1f1f;
     padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
-    text-align: left;
     font-size: 45px;
     margin: 0;
-}
-
-.links {
-    text-align: right;
+    color: orange;
 }
 
 .links a {
     margin: 10px;
+    color: orange;
 }
 
 .orangeBar {
@@ -30,11 +36,14 @@ header h1 {
 
 main {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .column {
-    width: 25%;
+    flex: 25%;
     padding: 25px;
+    background-color: #333333;
+    box-shadow: 0 6px 18px black;
 }
 
 .column img {
@@ -42,12 +51,72 @@ main {
     height: 260px;
 }
 
+.logo {
+    width: 120px !important;
+    height: auto !important;
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    margin-top: 10px;
+}
+
 .bottom {
     display: flex;
     justify-content: space-around;
     padding: 25px;
+    background-color: #1f1f1f;
 }
 
 h2 {
     font-size: 28px;
+    color: orange;
+}
+
+.column img:hover {
+    transform: scale(1.1);
+}
+
+summary {
+    color: orange;
+    cursor: pointer;
+}
+
+
+/* Two columns on medium screens */
+@media screen and (max-width: 992px) {
+
+    .column {
+        flex: 50%;
+    }
+
+}
+
+
+/* One column on small screens */
+@media screen and (max-width: 600px) {
+
+    main {
+        flex-direction: column;
+    }
+
+    .column {
+        flex: 100%;
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    .links {
+        margin-top: 15px;
+    }
+
+    .bottom {
+        flex-direction: column;
+    }
+
 }
