@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Central Tendency Calculator</title>
+
+    <link rel="stylesheet" href="ct.css">
+    <script src="ct.js"></script>
+</head>
+
+<body>
+
+    <h1>Central Tendency Calculator</h1>
+
+    <div class="myflexboxRow">
+
+        <div class="myflexboxColumn">
+
+            <h2>Set the Range</h2>
+
+            <form name="rangeForm">
+
+                Low Number:
+                <input type="number" name="lowNumber">
+                <br /><br />
+
+                High Number:
+                <input type="number" name="highNumber">
+                <br /><br />
+
+                <input type="button"
+                       value="Set Range"
+                       onclick="setRange()">
+
+            </form>
+
+            <p id="rangeMessage"></p>
+
+        </div>
+
+        <div class="myflexboxColumn">
+
+            <h2>Enter Numbers</h2>
+
+            <form name="myForm">
+
+                Number:
+                <input type="number" name="newNumber">
+                <br /><br />
+
+                <input type="button"
+                       value="Add Number"
+                       onclick="validateANDadd()">
+
+            </form>
+
+            <h3>Numbers Entered</h3>
+
+            <table id="myList">
+            </table>
+
+            <br /><br />
+
+            <input type="button"
+                   value="Clear the list"
+                   onclick="clearList()">
+
+        </div>
+
+        <div class="myflexboxColumn">
+
+            <h2>Results</h2>
+
+            <p>
+                Mean:
+                <span id="mean"></span>
+            </p>
+
+            <p>
+                Median:
+                <span id="median"></span>
+            </p>
+
+            <p>
+                Mode:
+                <span id="mode"></span>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

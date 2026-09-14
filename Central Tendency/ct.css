@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Container for flexboxes */
+.myflexboxRow {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create three equal columns */
+.myflexboxColumn {
+  flex: 33%;
+  padding: 20px;
+}
+
+/* On screens that are 600px wide or less,
+   stack the columns */
+@media screen and (max-width: 600px) {
+
+  .myflexboxRow {
+    flex-direction: column;
+  }
+
+}
