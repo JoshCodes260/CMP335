@@ -10,7 +10,7 @@
   
   /* Create two equal entries in myflexbox */
   .myflexboxColumn {
-    flex: 33%;
+    flex: 25%;
     padding: 20px;
   }
   

@@ -21,6 +21,16 @@
                 <option value=4>4</option>
                 <option value=5>5</option>
             </select><br /><br />
+            <label for="newType">All Meat or Meat and Filler</label>
+            <select id="newType">
+                <option value="meat">All Meat</option>
+                <option value="meat-and-filler">Meat and Filler</option>
+            </select><br /><br />
+            <label for="newEncrypt">With what algorithm do you want to encrypt the data?</label>
+            <select id="newEncrypt">
+                <option value="caesar">Caesar Cipher</option>
+                <option value="vigenere">Vigenère Cipher</option>
+            </select><br /><br />
             <input type="button" value="Get my Bacon Ipsum!" onclick="getBaconipsum()">
         </div>
         <div class="myflexboxColumn">
@@ -31,6 +41,11 @@
         <div class="myflexboxColumn">
             <h2>Returned data as formatted paragraphs</h2>
             <p id="myFormattedData">
+            </p>
+        </div>
+        <div class="myflexboxColumn">
+            <h2>Returned data after encryption</h2>
+            <p id="myEncryptedData">
             </p>
         </div>
     </div>    
