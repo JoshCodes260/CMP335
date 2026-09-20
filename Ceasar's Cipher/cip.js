@@ -47,29 +47,18 @@ for (let para in jsonData) {
             "<p>" + encryptedText + "</p>";
     }
 
-    else if (theNewEncrypt == "vigenere") {
+    else if (theNewEncrypt == "atbash") {
 
-    let key = "key";
     let encryptedText = "";
-    let keyIndex = 0;
 
     for (let i = 0; i < jsonData[para].length; i++) {
 
         let code = jsonData[para].charCodeAt(i);
 
         if (code >= 97 && code <= 122) {
-
-            let shift = key.charCodeAt(keyIndex % key.length) - 97;
-
-            code = code + shift;
-
-            if (code > 122) {
-                code = code - 26;
-            }
+            code = 122 - (code - 97);
 
             encryptedText = encryptedText + String.fromCharCode(code);
-
-            keyIndex++;
         }
         else {
             encryptedText = encryptedText + jsonData[para][i];
