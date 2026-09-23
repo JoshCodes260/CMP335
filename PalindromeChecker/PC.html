@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Palindrome Checker</title>
+
+    <link rel="stylesheet" href="PC.css">
+    <script src="PC.js"></script>
+</head>
+
+<body>
+
+    <h1>Palindrome Checker</h1>
+
+    <div class="myflexboxRow">
+
+        <!-- Form Column -->
+        <div class="myflexboxColumn">
+
+            <h2>Form to obtain a word and check<br>
+                if it is a palindrome
+            </h2>
+
+            <form name="rangeForm">
+
+    Word to check:
+    <input type="text" name="newWord">
+
+    <br>
+
+    Algorithm to use:
+    <select name="algorithm">
+        <option value="" disabled selected>Select an algorithm</option>
+        <option value="1">Algorithm 1</option>
+        <option value="2">Algorithm 2</option>
+    </select>
+
+    <br><br>
+
+    <input type="button"
+           value="Check and add to list"
+           onclick="checkWord()">
+
+</form>
+
+            
+
+        </div>
+
+
+        
+        <div class="myflexboxColumn">
+
+            <h2>Algorithm 1</h2>
+
+            <p><strong>(word: palindrome?)</strong></p>
+            <p id="algorithm1List"></p>
+            <br><br>
+
+            <input type="button"
+                   value="Clear the list"
+                   onclick="clearList1()">
+
+        </div>
+
+
+        
+        <div class="myflexboxColumn">
+
+            <h2>Algorithm 2</h2>
+
+            <p><strong>(word: palindrome?)</strong></p>
+            <p id="algorithm2List"></p>
+            <br><br>
+
+            <input type="button"
+                   value="Clear the list"
+                   onclick="clearList2()">
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
