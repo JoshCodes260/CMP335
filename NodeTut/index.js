@@ -4,11 +4,11 @@ const app = express();
 app.use(express.json());
 
 const courses = [
-    { id: 1, name: 'course1' },
-    { id: 2, name: 'course2' },
-    { id: 3, name: 'course3' },
-    { id: 4, name: 'course4' },
-    { id: 5, name: 'course5' }
+    { id: 1, name: 'course1', instructor: 'Smith', credits: 3 },
+    { id: 2, name: 'course2', instructor: 'Johnson', credits: 4 },
+    { id: 3, name: 'course3', instructor: 'Brown', credits: 3 },
+    { id: 4, name: 'course4', instructor: 'Davis', credits: 2 },
+    { id: 5, name: 'course5', instructor: 'Wilson', credits: 3 }
 ];
 
 app.get('/', (req, res) => {
@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 app.get('/api/courses', (req, res) => {
     res.send(courses);
 });
-
+0
 app.get('/api/courses/:id', (req, res) => {
     const course = courses.find(
         c => c.id === parseInt(req.params.id)
@@ -43,7 +43,9 @@ app.post('/api/courses', (req, res) => {
 
     const course = {
         id: courses.length + 1,
-        name: req.body.name
+        name: req.body.name,
+        instructor: req.body.instructor,
+        credits: req.body.credits
     };
 
     courses.push(course);
