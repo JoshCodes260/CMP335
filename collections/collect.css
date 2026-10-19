@@ -1,0 +1,62 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    color: orange;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+#artistList {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.artist {
+    background-color: #333;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.artist h3 {
+    color: orange;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+}
+
+button {
+    background-color: orange;
+    color: black;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkorange;
+}
+
+.deleteBtn {
+    background-color: #d9534f;
+    color: white;
+}
+
+.deleteBtn:hover {
+    background-color: #b52b27;
+}
