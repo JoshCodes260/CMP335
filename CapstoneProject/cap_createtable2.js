@@ -1,3 +1,4 @@
+
 var mysql = require('mysql2');
 
 var con = mysql.createConnection({
@@ -11,7 +12,7 @@ con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
 
-    var sql = "CREATE TABLE faculty (id INT AUTO_INCREMENT PRIMARY KEY, lastName VARCHAR(100) NOT NULL, firstName VARCHAR(100) NOT NULL, email VARCHAR(100))";
+    var sql = "CREATE TABLE courses (id INT AUTO_INCREMENT PRIMARY KEY, courseNumber VARCHAR(20) NOT NULL, courseName VARCHAR(100), facultyId INT, enrollmentLimit INT, FOREIGN KEY (facultyId) REFERENCES faculty(id))";
 
     con.query(sql, function(err, result) {
         if (err) throw err;
