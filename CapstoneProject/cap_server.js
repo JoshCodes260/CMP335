@@ -18,6 +18,7 @@ con.connect(function(err) {
     console.log("Connected to MySQL!");
 });
 
+
 // GET all students
 app.get('/api/students', function(req, res) {
     con.query("SELECT * FROM students", function(err, result) {
@@ -36,14 +37,13 @@ app.post('/api/students', function(req, res) {
     var firstName = req.body.firstName;
     var email = req.body.email;
 
-
     if (!lastName || typeof lastName !== 'string' || !lastName.trim()) {
-    return res.status(400).send("Student last name is required");
-}
+        return res.status(400).send("Student last name is required");
+    }
 
     if (!firstName || typeof firstName !== 'string' || !firstName.trim()) {
-    return res.status(400).send("Student first name is required");
-}
+        return res.status(400).send("Student first name is required");
+    }
 
     var sql = "INSERT INTO students (lastName, firstName, email) VALUES (?, ?, ?)";
     var values = [lastName, firstName, email || null];
@@ -62,9 +62,13 @@ app.post('/api/students', function(req, res) {
 });
 
 
- // GET a student by ID
+// GET a student by ID
 app.get('/api/students/:id', function(req, res) {
     var id = req.params.id;
+
+    if (!/^[1-9]\d*$/.test(id)) {
+        return res.status(400).send("Invalid student ID");
+    }
 
     var sql = "SELECT * FROM students WHERE id = ?";
 
@@ -89,6 +93,10 @@ app.put('/api/students/:id', function(req, res) {
     var lastName = req.body.lastName;
     var firstName = req.body.firstName;
     var email = req.body.email;
+
+    if (!/^[1-9]\d*$/.test(id)) {
+        return res.status(400).send("Invalid student ID");
+    }
 
     if (!lastName || typeof lastName !== 'string' || !lastName.trim()) {
         return res.status(400).send("Student last name is required");
@@ -116,9 +124,13 @@ app.put('/api/students/:id', function(req, res) {
 });
 
 
- // DELETE - Delete a student by ID
+// DELETE - Delete a student by ID
 app.delete('/api/students/:id', function(req, res) {
     var id = req.params.id;
+
+    if (!/^[1-9]\d*$/.test(id)) {
+        return res.status(400).send("Invalid student ID");
+    }
 
     var sql = "DELETE FROM students WHERE id = ?";
 
@@ -136,122 +148,6 @@ app.delete('/api/students/:id', function(req, res) {
     });
 });
 
-// GET all faculty
-app.get('/api/faculty', function(req, res) {
-    con.query("SELECT * FROM faculty", function(err, result) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send("Database error");
-        }
-        res.json(result);
-    });
-});
-
-
-// POST - Add a new faculty member
-app.post('/api/faculty', function(req, res) {
-    var lastName = req.body.lastName;
-    var firstName = req.body.firstName;
-    var email = req.body.email;
-
-    if (!lastName || typeof lastName !== 'string' || !lastName.trim()) {
-        return res.status(400).send("Faculty last name is required");
-    }
-
-    if (!firstName || typeof firstName !== 'string' || !firstName.trim()) {
-        return res.status(400).send("Faculty first name is required");
-    }
-
-    var sql = "INSERT INTO faculty (lastName, firstName, email) VALUES (?, ?, ?)";
-    var values = [lastName, firstName, email || null];
-
-    con.query(sql, values, function(err, result) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send("Database error");
-        }
-
-        res.status(201).json({
-            message: "Faculty added!",
-            id: result.insertId
-        });
-    });
-});
-
-
-// GET a faculty member by ID
-app.get('/api/faculty/:id', function(req, res) {
-    var id = req.params.id;
-
-    var sql = "SELECT * FROM faculty WHERE id = ?";
-
-    con.query(sql, [id], function(err, result) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send("Database error");
-        }
-
-        if (result.length === 0) {
-            return res.status(404).send("Faculty not found");
-        }
-
-        res.json(result[0]);
-    });
-});
-
-
-// PUT - Update a faculty member by ID
-app.put('/api/faculty/:id', function(req, res) {
-    var id = req.params.id;
-    var lastName = req.body.lastName;
-    var firstName = req.body.firstName;
-    var email = req.body.email;
-
-    if (!lastName || typeof lastName !== 'string' || !lastName.trim()) {
-        return res.status(400).send("Faculty last name is required");
-    }
-
-    if (!firstName || typeof firstName !== 'string' || !firstName.trim()) {
-        return res.status(400).send("Faculty first name is required");
-    }
-
-    var sql = "UPDATE faculty SET lastName = ?, firstName = ?, email = ? WHERE id = ?";
-    var values = [lastName, firstName, email || null, id];
-
-    con.query(sql, values, function(err, result) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send("Database error");
-        }
-
-        if (result.affectedRows === 0) {
-            return res.status(404).send("Faculty not found");
-        }
-
-        res.json({ message: "Faculty updated!" });
-    });
-});
-
-
-// DELETE - Delete a faculty member by ID
-app.delete('/api/faculty/:id', function(req, res) {
-    var id = req.params.id;
-
-    var sql = "DELETE FROM faculty WHERE id = ?";
-
-    con.query(sql, [id], function(err, result) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send("Database error");
-        }
-
-        if (result.affectedRows === 0) {
-            return res.status(404).send("Faculty not found");
-        }
-
-        res.json({ message: "Faculty deleted!" });
-    });
-});
 
 // GET all faculty
 app.get('/api/faculty', function(req, res) {
@@ -300,6 +196,10 @@ app.post('/api/faculty', function(req, res) {
 app.get('/api/faculty/:id', function(req, res) {
     var id = req.params.id;
 
+    if (!/^[1-9]\d*$/.test(id)) {
+        return res.status(400).send("Invalid faculty ID");
+    }
+
     var sql = "SELECT * FROM faculty WHERE id = ?";
 
     con.query(sql, [id], function(err, result) {
@@ -323,6 +223,10 @@ app.put('/api/faculty/:id', function(req, res) {
     var lastName = req.body.lastName;
     var firstName = req.body.firstName;
     var email = req.body.email;
+
+    if (!/^[1-9]\d*$/.test(id)) {
+        return res.status(400).send("Invalid faculty ID");
+    }
 
     if (!lastName || typeof lastName !== 'string' || !lastName.trim()) {
         return res.status(400).send("Faculty last name is required");
@@ -353,6 +257,10 @@ app.put('/api/faculty/:id', function(req, res) {
 // DELETE - Delete a faculty member by ID
 app.delete('/api/faculty/:id', function(req, res) {
     var id = req.params.id;
+
+    if (!/^[1-9]\d*$/.test(id)) {
+        return res.status(400).send("Invalid faculty ID");
+    }
 
     var sql = "DELETE FROM faculty WHERE id = ?";
 
@@ -392,6 +300,10 @@ app.get('/api/courses', function(req, res) {
 app.get('/api/courses/faculty/:facultyId', function(req, res) {
     var facultyId = req.params.facultyId;
 
+    if (!/^[1-9]\d*$/.test(facultyId)) {
+        return res.status(400).send("Invalid faculty ID");
+    }
+
     var sql = "SELECT courses.*, faculty.firstName, faculty.lastName " +
               "FROM courses JOIN faculty ON courses.facultyId = faculty.id " +
               "WHERE courses.facultyId = ?";
@@ -410,6 +322,10 @@ app.get('/api/courses/faculty/:facultyId', function(req, res) {
 // GET a course by ID
 app.get('/api/courses/:id', function(req, res) {
     var id = req.params.id;
+
+    if (!/^[1-9]\d*$/.test(id)) {
+        return res.status(400).send("Invalid course ID");
+    }
 
     var sql = "SELECT * FROM courses WHERE id = ?";
 
@@ -439,8 +355,12 @@ app.post('/api/courses', function(req, res) {
         return res.status(400).send("Course number is required");
     }
 
+    if (facultyId == null || !/^[1-9]\d*$/.test(String(facultyId))) {
+        return res.status(400).send("Valid faculty ID is required");
+    }
+
     var sql = "INSERT INTO courses (courseNumber, courseName, facultyId, enrollmentLimit) VALUES (?, ?, ?, ?)";
-    var values = [courseNumber, courseName || null, facultyId ?? null, enrollmentLimit ?? null];
+    var values = [courseNumber, courseName || null, facultyId, enrollmentLimit ?? null];
 
     con.query(sql, values, function(err, result) {
         if (err) {
@@ -469,12 +389,20 @@ app.put('/api/courses/:id', function(req, res) {
     var facultyId = req.body.facultyId;
     var enrollmentLimit = req.body.enrollmentLimit;
 
+    if (!/^[1-9]\d*$/.test(id)) {
+        return res.status(400).send("Invalid course ID");
+    }
+
     if (!courseNumber || typeof courseNumber !== 'string' || !courseNumber.trim()) {
         return res.status(400).send("Course number is required");
     }
 
+    if (facultyId == null || !/^[1-9]\d*$/.test(String(facultyId))) {
+        return res.status(400).send("Valid faculty ID is required");
+    }
+
     var sql = "UPDATE courses SET courseNumber = ?, courseName = ?, facultyId = ?, enrollmentLimit = ? WHERE id = ?";
-    var values = [courseNumber, courseName || null, facultyId ?? null, enrollmentLimit ?? null, id];
+    var values = [courseNumber, courseName || null, facultyId, enrollmentLimit ?? null, id];
 
     con.query(sql, values, function(err, result) {
         if (err) {
@@ -499,6 +427,10 @@ app.put('/api/courses/:id', function(req, res) {
 // DELETE - Delete a course by ID
 app.delete('/api/courses/:id', function(req, res) {
     var id = req.params.id;
+
+    if (!/^[1-9]\d*$/.test(id)) {
+        return res.status(400).send("Invalid course ID");
+    }
 
     var sql = "DELETE FROM courses WHERE id = ?";
 
