@@ -1,9 +1,13 @@
 
 var express = require('express');
 var mysql = require('mysql2');
+var cors = require('cors');
 
 var app = express();
+
 app.use(express.json());
+app.use(cors());
+app.use(express.static('public'));
 
 // Connect to MySQL
 var con = mysql.createConnection({
